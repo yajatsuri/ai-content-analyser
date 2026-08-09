@@ -4,7 +4,7 @@ export default function LoginButton() {
 
   function login() {
     window.location.href =
-      "http://65.0.73.18.nip.io:8080/oauth2/authorization/google";
+      "https://65.0.73.18.nip.io/oauth2/authorization/google";
   }
 
   return (
