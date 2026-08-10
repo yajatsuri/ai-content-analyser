@@ -114,4 +114,4 @@ Requires: Java 21, Python 3.11+, Node 18+, PostgreSQL, AWS credentials with S3 a
 ## Author
 
 **Yajat Suri** — B.Tech CSE (Big Data Analytics), NSUT East Campus '28
-[LinkedIn](https://linkedin.com/in/yajatsuri) · [GitHub](https://github.com/yajatsuri) · yajatsuri2909@gmail.com
+[LinkedIn](https://www.linkedin.com/in/yajat-suri/) · [GitHub](https://github.com/yajatsuri) · yajatsuri2909@gmail.com
