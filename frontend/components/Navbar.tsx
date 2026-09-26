@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { isLoggedIn, logout } from "@/lib/auth";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -14,6 +16,11 @@ const NAV_LINKS = [
  */
 export function Navbar() {
   const pathname = usePathname();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setLoggedIn(isLoggedIn());
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 w-full glass border-b border-[var(--color-border)]">
@@ -55,6 +62,16 @@ export function Navbar() {
               </li>
             );
           })}
+          {loggedIn && (
+            <li>
+              <button
+                onClick={logout}
+                className="px-4 py-2 text-sm font-medium rounded-full text-[var(--color-muted)] hover:text-[var(--color-ink)] hover:bg-[var(--color-surface)] transition-colors duration-200"
+              >
+                Log out
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
