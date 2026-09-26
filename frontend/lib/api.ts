@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { AnalyzeImageResponse, AnalysisHistoryResponse } from "@/lib/types";
+import { logout } from "@/lib/auth";
 
 const api = axios.create({
     baseURL:
@@ -17,9 +18,19 @@ api.interceptors.request.use((config) => {
     return config;
 });
 
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401) {
+            logout();
+        }
+        return Promise.reject(error);
+    }
+);
+
 export async function analyzeImage(file: File): Promise<AnalyzeImageResponse> {
     const formData = new FormData();
-    formData.append("image", file); // must match @RequestParam("image") on the backend
+    formData.append("image", file);
 
     const response = await api.post<AnalyzeImageResponse>(
         "/api/v1/analyses/image",
